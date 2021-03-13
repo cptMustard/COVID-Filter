@@ -1,29 +1,30 @@
 /*
- * Trump Filter - Content Script
+ * COVID Filter - Content Script
  *
- * This is the primary JS file that manages the detection and filtration of Donald Trump from the web page.
+ * This is the primary JS file that manages the detection and filtration of COVID from the web page.
+ * Yes this is a very basic search and replace from the original TRUMP filter
  */
 
 // Variables
-var regex = /Trump/i;
+var regex = /Covid/i;
 var search = regex.exec(document.body.innerText);
 
-var selector = ":contains('Trump'), :contains('TRUMP'), :contains('trump')";
+var selector = ":contains('Covid'), :contains('COVID'), :contains('covid'), :contains('Covid19'), :contains('COVID19'), :contains('covid19'), :contains('Covid-19'), :contains('COVID-19'), :contains('covid-19'), :contains('pandemie'), :contains('pandemic'), :contains('confinement'), :contains('couvre-feu')";
 
 
 // Functions
 function filterMild() {
-	console.log("Filtering Trump with Mild filter...");
+	console.log("Filtering Covid with Mild filter...");
 	return $(selector).filter("h1,h2,h3,h4,h5,p,span,li");
 }
 
 function filterDefault () {
-	console.log("Filtering Trump with Default filter...");
+	console.log("Filtering Covid with Default filter...");
 	return $(selector).filter(":only-child").closest('div');
 }
 
 function filterVindictive() {
-	console.log("Filtering Trump with Vindictive filter...");
+	console.log("Filtering Covid with Vindictive filter...");
 	return $(selector).filter(":not('body'):not('html')");
 }
 
@@ -47,15 +48,15 @@ function filterElements(elements) {
 
 // Implementation
 if (search) {
-   console.log("Donald Trump found on page! - Searching for elements...");
+   console.log("Covid found on page! - Disinfecting...");
    chrome.storage.sync.get({
      filter: 'aggro',
    }, function(items) {
 	   console.log("Filter setting stored is: " + items.filter);
 	   elements = getElements(items.filter);
 	   filterElements(elements);
-	   chrome.runtime.sendMessage({method: "saveStats", trumps: elements.length}, function(response) {
-			  console.log("Logging " + elements.length + " trumps.");
+	   chrome.runtime.sendMessage({method: "saveStats", covids: elements.length}, function(response) {
+			  console.log("Logging " + elements.length + " covids.");
 		 });
 	 });
   chrome.runtime.sendMessage({}, function(response) {});
