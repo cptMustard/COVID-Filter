@@ -9,7 +9,7 @@
 var regex = /Covid/i;
 var search = regex.exec(document.body.innerText);
 
-var selector = ":contains('Covid'), :contains('COVID'), :contains('covid'), :contains('Covid19'), :contains('COVID19'), :contains('covid19'), :contains('Covid-19'), :contains('COVID-19'), :contains('covid-19'), :contains('pandemie'), :contains('confinement'), :contains('couvre-feu')";
+var selector = ":contains('Covid'), :contains('COVID'), :contains('covid'), :contains('Covid19'), :contains('COVID19'), :contains('covid19'), :contains('Covid-19'), :contains('COVID-19'), :contains('covid-19'), :contains('pandemie'), :contains('pandemic'), :contains('confinement'), :contains('couvre-feu')";
 
 
 // Functions
