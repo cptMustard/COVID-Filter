@@ -2,14 +2,14 @@
  * COVID Filter - Content Script
  *
  * This is the primary JS file that manages the detection and filtration of COVID from the web page.
- * Yes this is a very basic search and replace from the original trump filter
+ * Yes this is a very basic search and replace from the original TRUMP filter
  */
 
 // Variables
 var regex = /Covid/i;
 var search = regex.exec(document.body.innerText);
 
-var selector = ":contains('Covid'), :contains('COVID'), :contains('covid'), :contains('covid19'), :contains('COVID19'), :contains('COVID-19'), :contains('covid-19'), :contains('Covid-19'), :contains('covid-19')";
+var selector = ":contains('Covid'), :contains('COVID'), :contains('covid'), :contains('Covid19'), :contains('COVID19'), :contains('covid19'), :contains('Covid-19'), :contains('COVID-19'), :contains('covid-19')";
 
 
 // Functions
@@ -55,7 +55,7 @@ if (search) {
 	   console.log("Filter setting stored is: " + items.filter);
 	   elements = getElements(items.filter);
 	   filterElements(elements);
-	   chrome.runtime.sendMessage({method: "saveStats", trumps: elements.length}, function(response) {
+	   chrome.runtime.sendMessage({method: "saveStats", covids: elements.length}, function(response) {
 			  console.log("Logging " + elements.length + " covids.");
 		 });
 	 });
