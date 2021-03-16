@@ -1,6 +1,6 @@
 COVID-19 Filter
 ================================
-A Chrome extension that removes COVID from the Internet.
+A Chrome extension that removes COVID from the (your) Internet.
 
 
 Overview
